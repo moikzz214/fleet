@@ -1,0 +1,130 @@
+<?php 
+    $hidden = '';
+    $disabled = '';
+    $saveBtn = '';
+    if($bodyClass == 'view-info'){ 
+        $hidden = 'hidden';
+        $disabled = 'disabled';
+    }else{
+        $saveBtn =  '<button  class="btn btn-primary" type="submit">Save</button>';
+    }
+    $user_id = false;
+    $cv_userID = '';
+    if(@$_GET['id']){
+        $user_id = $_GET['id'];
+        $cv_userID = 'cv_userID';
+    }
+?>
+<div class="card">
+<div class="card-body">
+        <h4 class="card-title">STUDENT DETAILS</h4>
+        <form class="needs-validation" novalidate="" id="form-update">
+          <div class="form-row">
+                <div class="col-md-6">
+                    <div class="form-row">
+                        <div class="col-md-5 mb-3">
+                        <label for="validationCustom01">First name</label>
+                        <input type="text" class="form-control <?=$disabled?> cv_fname" name="cv_fname" id="validationCustom01" placeholder="First name" required="" <?=$disabled?>>
+                        <input type="hidden" value="<?=$user_id?>" class="form-control hidden" name="<?=$cv_userID?>"  hidden>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        </div>
+                        <div class="col-md-5 mb-3">
+                        <label for="validationCustom02">Last name</label>
+                        <input type="text" class="form-control <?=$disabled?> cv_lname" name="cv_lname" id="validationCustom02" placeholder="Last name" required="" <?=$disabled?>>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
+                        </div> 
+                    </div>
+                    <div class="form-row" <?=$disabled?>>
+                            <div class="col-md-10 mb-3">
+                                <div class="custom-file">
+                                    <input type="file" class="custom-file-input" <?=$disabled?>>
+                                    <label class="custom-file-label" >Upload Image</label> 
+                                </div>
+                            </div>
+                    </div>
+
+                    <?php if(@$change_status){ ?>
+                            <div class="form-row">
+                                <div class="col-md-10 mb-3">
+                                    <div class="form-group row">
+                                      
+                                        <label for="change-status" class="col-2 col-form-label">Status</label> 
+                                      
+                                        <div class="col-md-4 mb-3">
+                                                <select class="custom-select  cv_status" name="cv_status" id="change-status">
+                                                   
+                                                </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                    <?php } ?>
+
+                </div>
+                <div class="col-md-6 mb-3">
+                        <div class="form-row">
+                                <div class="col-md-6 mb-3">
+                                    <label for="validationSchool">SCHOOL</label>
+                                    <select class="custom-select <?=$disabled?> cv_school" name="cv_school" id="validationSchool" required="" <?=$disabled?> >
+                                            <option value="">- Select -</option> 
+                                        </select>
+                                    <div class="invalid-feedback">Select School</div>
+                                </div>
+                                <div class="col-md-6 mb-3">
+                                        <label for="validationSchoolID">SCHOOL ID</label>
+                                        <input type="text" class="form-control <?=$disabled?> cv_schoolID" name="cv_schoolID" id="validationSchoolID" placeholder="Student School Identification"  minlength="5" required="" <?=$disabled?>>
+                                        <div class="invalid-feedback">Enter the Student ID</div>
+                                    </div>
+                          </div>
+                          <div class="form-row">
+                                <div class="col-md-5 mb-3">
+                                    <label for="validationCustom04">Country</label>
+                                    <select class="custom-select <?=$disabled?> cv_country" id="validationCustom04" name="cv_country" required="" <?=$disabled?>> 
+                                    </select>
+                                    <div class="invalid-feedback">Select Country</div>
+                                </div>
+                    
+                                <div class="col-md-5 mb-3">
+                                  <label for="validationCustom03">State</label>
+                                        <select class="custom-select <?=$disabled?> cv_state" name="cv_state" id="validationCustom03" required="" <?=$disabled?>> 
+                                        </select>
+                                      <div class="invalid-feedback">Select State</div>
+                                </div>  
+                              </div>
+                              <div class="form-row">
+                                    <div class="col-md-4 mb-3">
+                                        <label for="validationSection">Section</label>
+                                        <select class="custom-select <?=$disabled?> cv_section" name="cv_section" id="validationSection" <?=$disabled?>>
+                                            <option value="">- Select -</option> 
+                                        </select>
+                                        <div class="invalid-feedback">Select Section</div>
+                                    </div>
+                        
+                                    <div class="col-md-4 mb-3">
+                                      <label for="validationGrade">Grade</label>
+                                            <select class="custom-select <?=$disabled?> cv_grade" name="cv_grade" id="validationGrade" <?=$disabled?>>
+                                                <option value="">- Select -</option> 
+                                            </select>
+                                          <div class="invalid-feedback">Select Grade</div>
+                                    </div> 
+                                    <div class="col-md-4 mb-3">
+                                            <label for="validationDivision">Division</label>
+                                                  <select class="custom-select <?=$disabled?> cv_division" name="cv_division" id="validationDivision" <?=$disabled?>>
+                                                      <option value="">- Select -</option> 
+                                                  </select>
+                                                <div class="invalid-feedback">Select a Division</div>
+                                          </div>  
+                                  </div>
+                        
+                </div> 
+          </div> 
+          
+          <?=$saveBtn?>
+           
+        </form>
+    </div>
+</div>

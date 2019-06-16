@@ -1,0 +1,36 @@
+<?php if(@$filter_css_js && in_array('print', $filter_css_js)){ ?>
+<script src="<?=file_common_dir_back('js/jquery.PrintArea.js')?>" type="text/JavaScript"></script>
+<script>
+    $(document).ready(function() {
+            $("#print").click(function() {
+                var mode = 'iframe'; //popup
+                var close = mode == "popup";
+                var options = {
+                    mode: mode,
+                    popClose: close
+                };
+                $("div.printableArea").printArea(options);
+            });
+    });
+
+    $(document).bind("keydown", function(e){
+        if(e.ctrlKey && e.keyCode == 80){
+        e.preventDefault(); 
+            printing();
+        }
+    });
+    
+    function printing(){ 
+            $("#print").trigger('click',function() {
+                var mode = 'iframe'; //popup
+                var close = mode == "popup";
+                var options = {
+                    mode: mode,
+                    popClose: close
+                };
+                $("div.printableArea").printArea(options);
+                $('#print').hide();
+            });
+    }
+    </script>
+<?php } ?>

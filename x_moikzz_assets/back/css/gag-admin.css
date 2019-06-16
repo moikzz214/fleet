@@ -1,0 +1,68 @@
+.lists-profile .view-pass, .add-extras { cursor: pointer;}
+.hidden { display: none !important;}
+
+body.payment-account .shell {
+    position: relative;
+    line-height: 1; 
+}
+body.payment-account .shell span {
+      position: absolute;
+      left: 3px;
+      top: 2px;
+      color: red;
+      pointer-events: none;
+      z-index: -1; 
+}
+body.payment-account .shell span i {
+        /* any of these 3 will work */
+        color: transparent;
+        opacity: 0;
+        visibility: hidden; 
+}
+  
+body.payment-account input.masked,
+  .shell span {
+    font-size: 16px;
+    font-family: monospace;
+    padding-right: 10px;
+    background-color: transparent;
+    text-transform: uppercase; 
+} 
+  
+  .amex:after,
+  .visa:after,
+  .mastercard:after,
+  .discover:after {
+    position: absolute;
+    right: 0;
+    background: black;
+    color: white;
+    padding: 0 5px; }
+  
+  .amex:after {
+    content: 'A'; }
+  
+  .visa:after {
+    content: 'V'; }
+  
+  .mastercard:after {
+    content: 'M'; }
+  
+  .discover:after {
+    content: 'D'; }
+
+.food-selection p.complimentary { font-size: 10px; color: #fff; margin-bottom: 3px;}
+.food-selection hr.complimentary { margin-bottom: 10px; margin-top:3px;border-color:rgba(11, 162, 250, 0.76)}
+.food-selection span.total-price, span.single-balance{ font-weight: bold; }
+.food-selection .div-parent{ border-top:1px solid #ccc;padding-bottom:10px;}
+.food-selection .menu-card{ background-image: url("../../../x_moikzz_assets/images/background/socialbg.jpg");background-repeat: no-repeat, repeat;background-size: cover;  }
+/* Menu-calendar and menu-meals width for mobile 32.1% */
+.food-selection .menu-calendar,.menu-category{ padding: 5px; border: 1px solid #ccc; width:12.1%; text-align:center; color:#000; font-weight: bold;font-size:13px; display: inline-block;}
+.food-selection .menu-meals{ padding: 5px 10px 10px 10px; border: 1px solid #ccc; width:12.1%; text-align:center; color:#000; font-size:13px; display: inline-block; height: 100px; max-height:100px;}
+.food-selection .menus-title{ font-weight:bold; overflow: hidden;}
+.food-selection .checkbox label { font-size:12px;}
+.food-selection span.tooltip-item{ font-size:10px; background:transparent}
+.food-selection span.tooltip-text { font-size:11px; margin-left:10px;line-height: 1.5;}
+.food-selection .meal-title { max-height:33px; overflow: hidden;}
+.food-selection .col-lg-12 { min-height: 24px; }
+.food-selection .cart-remove, .supp-remove { cursor: pointer; z-index: 9999;}

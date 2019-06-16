@@ -1,0 +1,185 @@
+<?php 
+$reload_amount = 'reload_amount';
+$reload_firstName = 'reload_firstName';
+$reload_lastName = 'reload_lastName';
+$reload_country = 'reload_country';
+$reload_state = 'reload_state';
+$reload_address = 'reload_address';
+$reload_postal = 'reload_postal';
+$reload_email = 'reload_email'; 
+$reload_holder = 'reload_holder';
+$reload_card_number = 'reload_card_number';
+?>  
+<div class="row">
+    <div class="col-md-12">
+    <div class="card card-outline-info">
+        <div class="card-header">
+        <h4 class="m-b-0 text-white"><?=$pageHeader?></h4>                  
+        </div>
+        <div class="card-body"> 
+            <form class="needs-validation" novalidate="" autocomplete="false">
+                    <div class="row">
+                            <div class="col-md-12">
+                                <h6>Recharge for <b class="text-warning text"><?=@$student_info?></b></h6>
+                            </div>
+                    </div>
+                <hr>
+                <div class="form-row">
+                <div class="col-md-6">
+                        <div class="form-group row">
+                            <label for="inputAmount" class="col-sm-3 text-right control-label col-form-label">Amount (AED)</label>
+                            <div class="col-sm-9">
+                                <input type="tel" class="form-control" id="inputAmount"  placeholder="Minimum amount 50 AED" name="<?=$reload_amount?>" value="50" autofocus required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group row">
+                            <label for="inputFirst" class="col-sm-3 text-right control-label col-form-label">First Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputFirst" placeholder="First Name" name="<?=$reload_firstName?>" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputLast" class="col-sm-3 text-right control-label col-form-label">Last Name</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputLast" placeholder="Last Name" name="<?=$reload_lastName?>" required>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                                <label for="inputEmail3" class="col-sm-3 text-right control-label col-form-label">Email</label>
+                                <div class="col-sm-9">
+                                    <input type="email" id="profemail" disabled class="form-control disabled" placeholder="Email" name="<?=$reload_email?>" >
+                                </div>
+                            </div>    
+                    </div>
+                    <div class="col-md-6">
+                        
+                    <div class="form-group row">
+                            <label for="inputCountry" class="col-sm-3 text-right control-label col-form-label">Country</label>
+                            <div class="col-sm-9">
+                                <select class="custom-select" id="inputCountry" name="<?=$reload_country?>" required>
+                                    <option value="United Arab Emirates">United Arab Emirates</option> 
+                                </select>
+                                <div class="invalid-feedback">You need to select a Country</div>
+                            </div>
+                        </div> 
+                    <div class="form-group row">
+                        <label for="inputState" class="col-sm-3 text-right control-label col-form-label">State</label>
+                        <div class="col-sm-9">
+                                <select class="custom-select" id="inputState" name="<?=$reload_state?>" required>
+                                    <option value=''> - Select State - </option>
+                                    <option value="Abu Dhabi">Abu Dhabi</option> 
+                                    <option value="Ajman">Ajman</option>
+                                    <option value="Dubai">Dubai</option>
+                                    <option value="Fujaira">Fujaira</option>
+                                    <option value="Ras al Khaimah">Ras al Khaimah</option>
+                                    <option value="Sharjah">Sharjah</option>
+                                    <option value="Umm al-Qaiwain">Umm al-Qaiwain</option>
+                                </select>
+                                <div class="invalid-feedback">You need to select a State</div>
+                        </div>
+                    </div>      
+                    <div class="form-group row">
+                            <label for="inputAddress" class="col-sm-3 text-right control-label col-form-label">Address</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputAddress" placeholder="Current Address" name="<?=$reload_address?>">
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label for="inputpostal" class="col-sm-3 text-right control-label col-form-label">Postal Code</label>
+                            <div class="col-sm-9">
+                                <input type="text" class="form-control" id="inputpostal" placeholder="00000" value="00000" name="<?=$reload_postal?>" required>
+                            </div>
+                        </div>
+                    </div>  
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                            <div class="form-row">
+                                <div class="col-lg-8 col-md-12 col-sm-12">
+                                        <div class="checkbox checkbox-primary p-t-0">
+                                                <input id="account-info" type="checkbox" class="form-control" checked>
+                                                <label for="account-info"> Use account info </label>
+                                            </div>
+                                </div>
+                            </div>
+                    </div>
+                </div>
+                <hr>  
+                <div class="row">
+                        <div class="col-md-12">
+                            <h3>Card Holder Details</h3>
+                                <div class="form-row">
+                                        <div class="col-lg-8 col-md-12 col-sm-12">
+                                                <div class="form-group row">
+                                                    <label for="cc" class="col-lg-2 col-md-3 col-sm-12 text-right control-label col-form-label" >Card Number*</label>
+                                                    <div class="col-lg-4 col-md-4 col-sm-12">
+                                                        <input type="tel"  class="form-control masked" data-exception="cc" pattern="[3-6][0-9 ]{15,18}" id="cc" name="<?=$reload_card_number?>" placeholder="0000 0000 0000 0000" maxlength="22" required>
+                                                        <div class="invalid-feedback">Enter Card Number</div>
+                                                    </div>
+                                                
+                                                    <label for="inputCardHolder" class="col-lg-3 col-md-3 col-sm-12 text-right control-label col-form-label">Card Holder Name</label>
+                                                    <div class="col-lg-3 col-md-3 col-sm-12">
+                                                        <input type="text" class="form-control" id="inputCardHolder" name="<?=$reload_holder?>" required>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group row">
+                                                        <label for="inpuExpiryMonth" class="col-lg-2 col-md-3 col-sm-12 text-right control-label col-form-label">Expiry Date*</label>
+                                                        <div class="col-lg-2 col-md-3 col-sm-12">
+                                                                    <select class="custom-select" id="inpuExpiryMonth" name="<?=$reload_expiry_month?>" required>
+                                                                        <option value=''>- Month -</option>
+                                                                        <option value="1">01</option>
+                                                                        <option value="2">02</option>
+                                                                        <option value="3">03</option>
+                                                                        <option value="4">04</option>
+                                                                        <option value="5">05</option>
+                                                                        <option value="6">06</option>
+                                                                        <option value="7">07</option>
+                                                                        <option value="8">08</option>
+                                                                        <option value="9">09</option>
+                                                                        <option value="10">10</option>
+                                                                        <option value="11">11</option>
+                                                                        <option value="12">12</option>                                                                         
+                                                                    </select>
+                                                                    <div class="invalid-feedback">Expiry Date from your Card</div>
+                                                        </div> 
+                                                        <div class="col-lg-2 col-md-3 col-sm-12">
+                                                                <select class="custom-select" id="inpuExpiryYear" name="<?=$reload_expiry_month?>" required>
+                                                                    <option value=''>- Year -</option>
+                                                                    <?php $curYear = date('Y'); ?>
+                                                                    <?php $getYear = date('Y', strtotime('+10 Year')); ?>
+                                                                    <?php for($x = $curYear; $x < $getYear; $x++){ ?>
+                                                                    <option value="<?=$x?>"><?=$x?></option>
+                                                                    <?php } ?>
+                                                                </select>
+                                                                <div class="invalid-feedback">Expiry Date from your Card</div>
+                                                        </div>
+                                                        <label for="inputCVV" class="col-lg-3 col-md-3 col-sm-12 text-right control-label col-form-label">CVV Number*</label>
+                                                        <div class="col-lg-2 col-md-3 col-sm-12">
+                                                                <input type="text" class="form-control" id="inputCVV" maxlength="3" name="<?=$reload_holder?>" required>
+                                                        </div> 
+                                                        <a href="#" class="tool-info" data-toggle="tooltip" title="" data-original-title=""></a>
+                                                        <a class="mytooltip" href="javascript:void(0)"><i class="fa fa-info-circle"></i><span class="tooltip-content3">3 digit from back of your card.</span></a>     
+                                                       
+                                                </div>
+                                        </div>
+                                </div>
+                        </div>
+
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group row">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
+                                <button type="button" class="btn btn-info waves-effect btn-paynow waves-light m-t-10">Pay Now</button> 
+                                <button hidden class="btn hidden btn-warning d-payment waves-effect waves-light m-t-10">Confirm to Pay</button> 
+                                <label class="formMsg text-danger m-l-10 "></label>
+                            </div> 
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    </div>
+</div>

@@ -1,0 +1,37 @@
+<?php defined('BASEPATH') OR exit('No direct script access allowed');?>
+<aside class="left-sidebar">
+    <!-- Sidebar scroll-->
+    <div class="scroll-sidebar">
+        <!-- User profile -->
+        <div class="user-profile">
+            <!-- User profile image -->
+            <div class="profile-img"> <img src="<?=imgs_dir('users/profile.png')?>" alt="user" />
+                <!-- this is blinking heartbit-->   
+                <div class="notify setpos"> <span class="heartbit"></span> <span class="point"></span> </div>
+            </div>
+            <!-- User profile text-->
+            <div class="profile-text">
+                <h5>Steve Ayala</h5>
+                <a href="<?=site_url('client/page/profile/')?>" aria-expanded="true"><i class="mdi mdi-account"></i></a>
+                
+                <a href="pages-login.html" class="" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
+                
+            </div>
+        </div> 
+      
+        <!-- End User profile text-->
+        <!-- Sidebar navigation-->
+        <nav class="sidebar-nav">
+            <ul id="sidebarnav">
+                <li class="nav-devider"></li>
+                <li class="nav-small-cap">PERSONAL</li>
+                
+                <!--  Menus -->
+                <?php $this->load->view('templates/inc/back/menus.html'); ?>
+
+            </ul>
+        </nav>
+        <!-- End Sidebar navigation -->
+    </div>
+    <!-- End Sidebar scroll-->
+</aside>

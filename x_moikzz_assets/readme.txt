@@ -1,0 +1,1 @@
+images and plugins for backend and frontend if back and front both using adminpress
