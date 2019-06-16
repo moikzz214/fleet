@@ -49,7 +49,7 @@ class General_pages extends SS_Controller {
 
     private function links(){
         $this->data_pages = $this->pg;
-        return $this->{$this->data_pages}();
+        return $this->{$this->data_pages}(); 
     }
 
     
