@@ -35,7 +35,7 @@ class General_pages extends SS_Controller {
 		$this->page_not_found();
 
 	}
-
+ 
     public function view($page='dashboard'){
            
         if (!method_exists($this, $page)){

@@ -1,12 +1,12 @@
 .DS_Store
 
-application/cache/*
-!application/cache/index.html
+x_moikzz_application/cache/*
+!x_moikzz_application/cache/index.html
 
-application/logs/*
-!application/logs/index.html
+x_moikzz_application/logs/*
+!x_moikzz_application/logs/index.html
 
-!application/*/.htaccess
+!x_moikzz_application/*/.htaccess
 
 composer.lock
 
