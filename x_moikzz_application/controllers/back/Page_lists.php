@@ -49,7 +49,7 @@ class Page_lists extends SS_Controller {
         $this->filter = array('print');
         // graph , table, form, modal - CSS and JS
         $data['filter_css_js'] = $this->filter;
-
+        $data['title'] = 'Invoices';
         $data['bodyClass'] = 'view-invoice';
         $data['pageclass'] = 'view-invoice';        
         $this->template->load( 'back/template', 'back/forms/invoice.html', $data); 
@@ -68,7 +68,7 @@ class Page_lists extends SS_Controller {
         $data['jsCustom'] = $this->jsCustom;
         $data['bodyClass'] = 'payment-account';
         $data['pageclass'] = 'payment-account';
-
+        $data['title'] = 'Payments';
         $stud_id = @$_GET['id'] ?  $_GET['id'] : null;
 
         if(!$stud_id) return $this->page_not_found();
@@ -89,7 +89,7 @@ class Page_lists extends SS_Controller {
         $data['pages'] = 'orders';
         $data['pagetitle'] = 'Menu Order';
         $data['pageHeader'] = 'Food Selection';
-
+        $data['title'] = 'Menus';
         $this->jsCustom = 4;
         $data['jsCustom'] = $this->jsCustom;
 
@@ -130,6 +130,7 @@ class Page_lists extends SS_Controller {
         $v = $this->controller;
         $data['breadcrumbs'] = '<li class="breadcrumb-item"><a href="'.base_url().'client/page/'.$v.'/">'.ucfirst($v).'</a></li><li class="breadcrumb-item active"> Add New </li>';
         $data['pages'] = 'addnew';
+        $data['title'] = 'Students';
         $data['pagetitle'] = 'Add New';
         $this->filter = array('');
         // graph , table, form, modal - CSS and JS
@@ -150,7 +151,7 @@ class Page_lists extends SS_Controller {
         $this->filter = array('');
         // graph , table, form, modal - CSS and JS
         $data['filter_css_js'] = $this->filter;
-        
+        $data['title'] = 'Students';
         $data['change_status'] = true;
         //$data['schools'] = 
 
@@ -168,7 +169,7 @@ class Page_lists extends SS_Controller {
         $this->filter = array('');
         // graph , table, form, modal - CSS and JS
         $data['filter_css_js'] = $this->filter;
-
+        $data['title'] = 'Students';
         $data['jsCustom'] = $this->jsCustom;
         
         $data['bodyClass'] = 'view-info';

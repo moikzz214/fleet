@@ -6,7 +6,7 @@
  */
 class General_pages extends SS_Controller { 
 
-    protected $pg;
+    protected $pg; 
     protected $pages;
     protected $namespace;
     protected $breadcrumbs;
@@ -157,12 +157,14 @@ class General_pages extends SS_Controller {
         $data['breadcrumbs'] = '<li class="breadcrumb-item active">'.ucfirst($this->namespace).'</li>';
         $data['filter_css_js'] = $this->filter;
         $data['pages'] =  $this->namespace;
+        $data['title'] = $this->pageTitle;
         $data['pagetitle'] = $this->pageTitle;
         $data['bodyClass'] = $this->bodyClass;
         $data['pageclass'] = $this->pageClass;
         $data['pageHeader'] = $this->pageHeaderz;
         
         $data['jsCustom'] = $this->jsCustom;
+        $data['system'] = 'Moikzz Application';
       
         $this->template->load( 'back/template', $this->page, $data); 
     }
