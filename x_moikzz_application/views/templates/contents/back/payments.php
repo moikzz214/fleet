@@ -5,6 +5,12 @@
             <div class="card-body">
                 <div class="row button-group">
                     <div class="col-xl-1 col-md-2 col-sm-12 "><h4 class="card-title">Lists</h4></div> 
+                    <div class="col-xl-1 col-md-1 col-sm-12 "> 
+                    <div class="checkbox checkbox-primary p-t-0">
+                        <input id="list-download" type="checkbox">
+                        <label for="list-download"> Download </label>
+                    </div>
+                </div>
                 </div> 
                 <div class="table-responsive">
                     <table  class="display nowrap table table-hover table-striped table-bordered <?=$pages; ?>" cellspacing="0" width="100%">

@@ -108,8 +108,19 @@ var app = {
     var t3 = $(t2).attr('id');
     /* Change 0 if for dropdown selection : 1 for downloads */
 
+    $('body').on('change', '#list-download', function(e){ 
+          $('#' + t3).dataTable().fnClearTable(0); 
+          $('#' + t3).dataTable().fnDestroy(); 
+        
+          if ($(this).is(':checked')) { 
+            app.dataTablesInitialize('#' + t3, 1, ns);
+          }else{
+            app.dataTablesInitialize('#' + t3, 0, ns);
+          } 
+    });
+    
     if (t3) {
-      app.dataTablesInitialize('#' + t3, 1, ns);
+      app.dataTablesInitialize('#' + t3, 0, ns);
     }
   },
   dataTablesInitialize: function dataTablesInitialize(tables, download, bodyClass) {
@@ -178,9 +189,20 @@ var app = {
   
     if (!zapi) {
       return false;
-    }
+    }  
+
+    /*  if download buttons  */
+    if(download){ 
+      var dm = 'Bfrtip';
+        $.extend($.fn.dataTable.defaults, { 
+          buttons: ['copy', 'excel', 'csv', 'pdf']
+        });
+    }else{
+      var dm = '<lf<t>ip>'
+    }  
    
     $(tables).DataTable({
+      dom:  dm,
       "columnDefs": colDef,
       processing: true,
       bserverSide: true,
@@ -199,7 +221,7 @@ var app = {
       stateSave: true,
       drawCallback: function drawCallback(settings) {
             var api = this.api();
-         
+          
             var rows = api.rows({
               page: 'current'
             }).nodes();
@@ -237,7 +259,17 @@ var app = {
             });
       }
     });
+    /* dom: 'Bfrtip',
+      buttons: ['copy', 'excel', 'pdf', 'csv'], */
+
+    
+
+     
+
+    
+ 
   },
+
   resetPass: function resetPass() {
     app.profileInfo(true, true);
 
@@ -1900,7 +1932,7 @@ var app = {
   }, 
 
   init: function init() {
-    console.log(jsCustom);
+    
     /* Table Lists */
     if (jsCustom == 1) app.dataTableConnection();
     /* Profile */
