@@ -12,12 +12,13 @@ var app = {
       return decodeURI(results[1]) || 0;
     }
   },
-  keyApi: 'k=2zSM*(sOGkVs193201971Jq)Sk0*^%skdjDs3051Fz4AKz821Pq7053atK&p=9',
-  profileApi: base_url + 'api/sys/_users',
-  productApi: base_url + 'api/sys/_products',
-  studentApi: base_url + 'api/sys/_students',
-  displayOrdersApi: base_url + 'api/sys/_orders',
-  schoolApi: base_url  + 'api/sys/_orgs',
+  keyApi: 'k='+key,
+  userTypesApi: base_url + 'api/vw/_users_types',
+  profileApi: base_url + 'api/vw/_users',
+  productApi: base_url + 'api/vw/_products',
+  studentApi: base_url + 'api/vw/_students',
+  displayOrdersApi: base_url + 'api/vw/_orders',
+  schoolApi: base_url  + 'api/vw/_orgs',
 
   /**
    * orderApi: width Form submission
@@ -42,6 +43,12 @@ var app = {
    * API: Add and Update Student info
    */  
   studentNups: base_url + 'api/sys/studentInfos',
+
+    /** 
+   * studentNups: with Form submission
+   * API: Add and Update Student info
+   */  
+  sysModuleApi: base_url + 'api/sys/sys_modules',
   
   lang: function lang() {
     return true ? $('body').hasClass('rtl') : false;
@@ -54,7 +61,7 @@ var app = {
             showCancelButton: true,
             confirmButtonColor: "#DD6B55",
             confirmButtonText: "Confirmed!",
-            closeOnConfirm: false
+            closeOnConfirm: true
         }, function(isConfirm){
           if (!isConfirm) return;
            
@@ -76,15 +83,14 @@ var app = {
                        setTimeout(function(){  location.reload(); }, 2000); 
                     }else if(typ == 'studinfo'){
                       window.location.href = base_url + 'client/page/students/update?id='+data.id+'&o='+dataItems['school'];
-                    } 
-
+                    }
 
                     if (classID && fields) {
                       $.each(classID, function (i, k) {
                         $(k).html(data.message[fields[0]]);
                       });
                     }
-                    $("form").remove();  /* Remove the form */
+                  //  $("form").remove();  /* Remove the form */
               }else{
                 swal({   
                   title: "Error!",   
@@ -1768,11 +1774,16 @@ var app = {
       var target = $(this);
 
       if(namepage == 'orders'){ 
-        var data = app.formOrders(target);   txt = 'Continue to Order...';
+        var data = app.formOrders(target);   
+        txt = 'Continue to Order...';
         typez = 'cart';
       }else if(namepage == 'addnew' || namepage == 'updating'){ 
         var data = app.formStudentInfo(target);
         typez = 'studinfo';
+      }else{
+        var data = $(this).serialize();
+        txt = 'Updating System Modules';
+        
       }
 
       app.ajax_load_info(txt, namepage, data, controller, false, false, typez);
@@ -1931,6 +1942,96 @@ var app = {
     return false;
   }, 
 
+  systemInfo: function(){
+    var typez = app.userTypesApi + '?'+app.keyApi; 
+
+    var info = $.post(typez, function (data) {  
+        return data; 
+    },'json');
+
+    info.always(function(ii,s){
+      $.each(ii, function(iz,o){
+        
+            if(iz == 0){
+              var active = 'active';
+            }else{
+              var active = '';
+            }
+
+           
+            var ctitle = o['ztitle'];
+                title = ctitle.charAt(0).toUpperCase()+ctitle.slice(1);
+                title = title.replace("_", " ");
+            var titleID = o['ztitle'].toLowerCase();
+            var zid = o['zid'];
+
+            $('.nav-tabs').append('<li class="nav-item"> <a class="nav-link '+active+'" data-zid="'+zid+'" data-toggle="tab" data-id="'+titleID+'" href="#'+titleID+'" role="tab"><span class="hidden-sm-up"><i class="ti-home"></i></span> <span class="hidden-xs-down">'+title+'</span></a> </li>');
+            
+            if(active){
+                var items = o['zvalue']['pages'];
+                var items2 = o['zvalue']['options'];
+                $.each(items, function(i,o){ 
+                  $("input[name='"+o+"']").attr('checked','checked');
+                });
+
+                $.each(items2, function(i,o){ 
+                  $("input[name='"+o+"']").attr('checked','checked');
+                });
+            }
+      });
+
+      $('.sys-settings .nav-tabs').on('click','.nav-link', function(e){
+          e.preventDefault();
+
+          
+          var id = $(this).data('id');
+          var cid = $(this).data('zid');
+          console.log(cid);
+          app.moduleOtherTabs(cid);
+          var tabContent = $(this).parents('.card-body').find('.tab-pane');
+          $(tabContent).children('#input-admin').val(cid);
+          $(tabContent).attr('id',id);
+          $(tabContent).attr('data-zid',cid);
+      });
+
+      /* Submit System Module */
+      var controller = app.sysModuleApi + '?'+app.keyApi; 
+      app.formSubmittion('body.sys-settings','#form-update', controller);
+    });
+  },
+
+  moduleOtherTabs: function(cid){
+    var typez = app.userTypesApi + '?'+app.keyApi+'&s='+cid; 
+
+    var info = $.post(typez, function (data) {  
+        return data; 
+    },'json');
+
+    info.always(function(ii,s){
+      $.each(ii, function(iz,o){
+        $("input").removeAttr('checked');
+            if(iz == 0){
+              var active = 'active';
+            }else{
+              var active = '';
+            }
+
+            if(active){
+                var items = o['zvalue']['pages'];
+                var items2 = o['zvalue']['options'];
+                
+                $.each(items, function(i,o){ 
+                  $("input[name='"+o+"']").attr('checked','checked');
+                });
+
+                $.each(items2, function(i,o){ 
+                  $("input[name='"+o+"']").attr('checked','checked');
+                });
+            }
+      }); 
+    });
+  },
+
   init: function init() {
     
     /* Table Lists */
@@ -1946,6 +2047,8 @@ var app = {
     if (jsCustom == 4) app.menuCreation(); 
     
     if (jsCustom == 5) app.studentInfo();
+
+    if (jsCustom == 9) app.systemInfo();
   }
 };
 $(document).ready(function ($) { 

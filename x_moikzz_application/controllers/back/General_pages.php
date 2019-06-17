@@ -153,6 +153,17 @@ class General_pages extends SS_Controller {
         $this->template_display(); 
     } 
 
+    private function system(){
+        $this->namespace = 'system';
+        $this->pageTitle = 'Admin System Settings';
+        $this->bodyClass = 'sys-settings';
+        $this->pageClass = 'sys-settings';  
+        $this->jsCustom = 9; 
+        $this->pageHeaderz = "Web Information";
+        $this->page = 'templates/contents/back/'.$this->namespace;
+        $this->template_display(); 
+    }
+
     private function template_display(){ 
         $data['breadcrumbs'] = '<li class="breadcrumb-item active">'.ucfirst($this->namespace).'</li>';
         $data['filter_css_js'] = $this->filter;

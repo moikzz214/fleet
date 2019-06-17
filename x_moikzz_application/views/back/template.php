@@ -18,6 +18,7 @@
 var base_url =  '<?=base_url()?>';
 let curUrl = '<?=get_current_url()?>';
 var jsCustom =  '<?=@$jsCustom?>';
+var key =  '<?=public_key()?>';
 </script>
 </head>
 

@@ -2,6 +2,8 @@
 
 class SS_Controller extends CI_Controller { 
 
+    protected $query;
+
 	function __construct() { 
 
         parent::__construct();

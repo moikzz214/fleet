@@ -389,11 +389,11 @@ $config['encryption_key'] = 'DaBH42eVPE317G78TsU5bcW4';
 */
 $config['sess_driver'] = 'files';
 $config['sess_cookie_name'] = 'ci_fleet';
-$config['sess_expiration'] = 7200;
+$config['sess_expiration'] = 86400;
 $config['sess_save_path'] = BASEPATH.'cache';
 $config['sess_match_ip'] = TRUE;
-$config['sess_time_to_update'] = 300;
-$config['sess_regenerate_destroy'] = FALSE;
+$config['sess_time_to_update'] = 86400;
+$config['sess_regenerate_destroy'] = TRUE;
 
 /*
 |--------------------------------------------------------------------------

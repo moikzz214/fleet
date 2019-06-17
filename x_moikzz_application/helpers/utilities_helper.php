@@ -40,7 +40,8 @@
 			$year = date('Y');
 			$month = date('m');
 			$day = date('d');
-			$key = '2zSM*(sOGkVs193'.$year.'71Jq)Sk0*^%skdjDs3'.$month.'1Fz4AKz821Pq7'.$day.'3atK'; 
+			//$key = '2zSM*(sOGkVs193'.$year.'71Jq)Sk0*^%skdjDs3'.$month.'1Fz4AKz821Pq7'.$day.'3atK'; 
+			$key = '2zSM*(sOGkVs193201971Jq)Sk0*^%skdjDs3051Fz4AKz821Pq7053atK'; 
 			return  $key;
 
 		} 

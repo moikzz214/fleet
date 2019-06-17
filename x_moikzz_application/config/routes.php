@@ -51,6 +51,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 */
 $route['default_controller'] = 'welcome';
 $route['api/sys/(:any)'] = 'back/General_callbacks/view/$1';  
+$route['api/vw/(:any)'] = 'back/Viewing_callbacks/view/$1';  
 $route['client'] = 'back/General_pages';  
 $route['client/page'] = 'back/General_pages'; 
 $route['compress/cache'] = 'back/Compress/clear_cache'; 
